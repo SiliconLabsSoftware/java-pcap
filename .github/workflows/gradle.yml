@@ -27,12 +27,12 @@ jobs:
     - name: Gradle test
       run: ./gradlew test
     - name: Archive jar file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: java-pcap
         path: pcap/build/libs/java-pcap-*.jar
     - name: Archive license file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: java-pcap
         path: LICENSE.txt
