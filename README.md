@@ -1,4 +1,4 @@
-![](https://github.com/SiliconLabs/java_pcap_file_utilities/workflows/Jar%20Build/badge.svg)
+[![Jar Build](https://github.com/SiliconLabsSoftware/java-pcap/actions/workflows/gradle.yml/badge.svg)](https://github.com/SiliconLabsSoftware/java-pcap/actions/workflows/gradle.yml)
 
 # What is this?
 
