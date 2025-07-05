@@ -2,6 +2,12 @@ plugins {
     id 'java-library'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }   
+}
+
 project.ext.set('archiveName', 'java-pcap')
 project.ext.set('pcapVersion', file('VERSION').text.trim())
 project.ext.set('buildDate', new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date())) 
