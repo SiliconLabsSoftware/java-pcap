@@ -8,6 +8,5 @@ build_pcap.stamp
 
 # SonarQube scans
 .scannerwork/
-sonar-project.properties
 
 release/
