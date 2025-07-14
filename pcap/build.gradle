@@ -103,3 +103,26 @@ task all {
   dependsOn createBuildStamp,jar,javadocJar,sourcesJar
 }
 
+publishing {
+    repositories {
+        maven {
+            url = 'https://artifactory.silabs.net/artifactory/studio-maven-release-local/'
+            credentials {
+                username = project.findProperty('publishUser') ?: System.getenv('JF_USERNAME')
+                password = project.findProperty('publishPw') ?: System.getenv('JF_PASSWORD')
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            groupId = 'com.silabs.na.pcap'
+            artifactId = project.archiveName
+            version = project.silabsPtiVersion
+        }
+    }
+}
+
