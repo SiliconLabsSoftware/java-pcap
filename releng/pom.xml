@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>java-pcap-install-local</groupId>
+  <artifactId>java-pcap-install-local</artifactId>
+  <version>1</version>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>java-pcap</groupId>
+    <artifactId>java-pcap</artifactId>
+    <version>1</version>
+    <relativePath>../pom-local-install.xml</relativePath>
+  </parent>
+
+
+  <properties>
+    <target.destination>../updates</target.destination>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.3.2</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${target.destination}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.5.2</version>
+        <executions>
+            <execution>
+                <id>install-external</id>
+                <phase>process-resources</phase>
+                <configuration>
+                    <file>${basedir}/../pcap/build/libs/java-pcap-${java.pcap.version}.jar</file>
+                    <repositoryLayout>default</repositoryLayout>
+                    <groupId>com.silabs.na.pcap</groupId>
+                    <artifactId>java-pcap</artifactId>
+                    <version>${java.pcap.version}</version>
+                    <packaging>jar</packaging>
+                    <generatePom>true</generatePom>
+                    <localRepositoryPath>maven</localRepositoryPath>
+                </configuration>
+                <goals>
+                    <goal>install-file</goal>
+                </goals>
+            </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

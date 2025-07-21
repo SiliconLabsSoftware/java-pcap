@@ -1,10 +1,11 @@
 plugins {
     id 'java-library'
+    id "biz.aQute.bnd.builder" version "7.0.0"
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(21)
     }   
 }
 
@@ -56,6 +57,19 @@ jar {
     manifest {
         attributes(project.manifestMap)
     }
+    // OSGi metadata using BND
+  bundle {
+    bnd(
+      "Bundle-Name": "silabs-pcap-lib",
+      "Bundle-Vendor": "Silicon Labs",
+      "Bundle-SymbolicName": "com.silabs.external.java_pcap",
+      "Bundle-Version": project.pcapVersion,
+      "Bundle-RequiredExecutionEnvironment": "JavaSE-11",
+      "Bundle-ActivationPolicy": "lazy",
+      "Main-Class": project.mainClass,
+      "-exportcontents": "com.silabs.na.pcap.*"
+    )
+  }
 }
 
 task generateLinkType() {
