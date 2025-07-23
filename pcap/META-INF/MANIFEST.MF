@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pcap
+Bundle-SymbolicName: com.silabs.external.java_pcap
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: .,
+ com.silabs.na.pcap,
+ com.silabs.na.pcap.impl,
+ com.silabs.na.pcap.util,
+ com.silabs.pcap
